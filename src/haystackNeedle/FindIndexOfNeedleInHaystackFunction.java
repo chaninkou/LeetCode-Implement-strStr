@@ -2,7 +2,7 @@ package haystackNeedle;
 
 public class FindIndexOfNeedleInHaystackFunction {
 	public int strStr(String haystack, String needle) {
-		// if there is no needle, that mean 0 appearing
+		// if there is no needle, that mean 0 appearing (from question)
 		if (needle.length() == 0) {
 			return 0;
 		}
@@ -12,6 +12,7 @@ public class FindIndexOfNeedleInHaystackFunction {
 			return -1;
 		}
 
+		// One pointer will keep track of current start, reset when next element
 		// Within haystack.length
 		for (int i = 0; i < haystack.length(); i++) {
 			// There could not have enough spaces for needle after i
@@ -19,6 +20,7 @@ public class FindIndexOfNeedleInHaystackFunction {
 				break;
 			}
 
+			// Check the needle on every i elements
 			// Within needle.length
 			for (int j = 0; j < needle.length(); j++) {
 				// Stop the loop when they don't equal for example h != l
