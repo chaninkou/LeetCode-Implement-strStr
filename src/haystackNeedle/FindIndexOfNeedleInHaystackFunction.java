@@ -15,7 +15,7 @@ public class FindIndexOfNeedleInHaystackFunction {
 		// One pointer will keep track of current start, reset when next element
 		// Within haystack.length
 		for (int i = 0; i < haystack.length(); i++) {
-			// There could not have enough spaces for needle after i
+			// No point of checking if needle is too long to be in haystack
 			if (i + needle.length() > haystack.length()) {
 				break;
 			}
@@ -24,20 +24,25 @@ public class FindIndexOfNeedleInHaystackFunction {
 			// Within needle.length
 			for (int j = 0; j < needle.length(); j++) {
 				// Stop the loop when they don't equal for example h != l
+				// Its like a base case
 				if (haystack.charAt(i + j) != needle.charAt(j)) {
 					break;
 				}
 
-				// If index j is the same length as needle, that means i is the
-				// answer
-				// Since this statement will only happen when they equal l = l,
-				// and same length
+				// Since previous if statement will make sure everything til here is equal to each other
 				if (j == needle.length() - 1) {
+					// I is starting index
 					return i;
 				}
 			}
 		}
-
+		
+		// If not found
 		return -1;
+	}
+	
+	// Easy solution with built in, faster way
+	public int strStr2(String haystack, String needle){
+		return haystack.indexOf(needle);
 	}
 }
